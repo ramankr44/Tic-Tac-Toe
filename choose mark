@@ -1,0 +1,15 @@
+def choose_mark(mark):  
+    
+    '''
+    Player1 Choose the mark
+    '''
+    mark=''
+    while mark!='x' and mark!='o':
+        mark=input(" Please choose your mark 'x' or 'o' : ").lower()
+
+    if mark=='x':
+        return ('x','o')
+    elif mark =='o':
+        return ('o','x')
+    else:
+        print('Invalid choice')
