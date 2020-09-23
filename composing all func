@@ -1,0 +1,74 @@
+def main():
+    print("Welcome to Tic Tac Toe ....!!")
+
+    #Start the game..
+
+    while True:
+
+        #set the board
+        board=[" "]*10
+        Player_1=''
+        Player_2=''
+
+        while len(Player_1)==0:
+            Player_1=input('Player 1 Enter your name : ')
+
+        while len(Player_2)==0:
+            Player_2=input('Player 2 Enter your name : ')
+
+
+        # Toss to decide who goes first
+        turn=toss(Player_1,Player_2)
+        print(turn+"! You won the toss, Start the game !!!")
+
+        # Assign marker
+        mark1,mark2=choose_mark(turn)
+
+        if turn==Player_1:
+            print('Hi ' + Player_1+ " your mark is "+mark1)
+            print('Hi ' + Player_2+ " your mark is "+mark2)
+        else:
+            print('Hi ' + Player_2+ " your mark is "+mark1)
+            print('Hi ' + Player_1+ " your mark is "+mark2)
+
+
+
+        while True:
+
+            if turn==Player_1:
+                #display_board(board)
+                print(Player_1+' Its your turn! Enter the location of: '+mark1)
+
+                position=enterPosition(board)
+                updateBoard(board,position,mark1)
+                display_board(board)
+
+                if win_check(board,mark1):
+                    print('Congratulations ' + Player_1 +  '! You Won')
+                    break
+                else:
+                    if full_board_check(board):
+                        print('Game Draw....!!')
+                        break
+                    else:
+                        turn=Player_2
+
+            else:
+               # display_board(board)
+                print(Player_2+' Its your turn! Enter the location of: '+mark2)
+                position=enterPosition(board)
+                updateBoard(board,position,mark2)
+                display_board(board)
+
+                if win_check(board,mark2):
+                    print('Congratulations ' + Player_2 +  '! You Won')
+                    break
+                else:
+                    if full_board_check(board):
+                        print('Game draw....!!')
+                        break
+                    else:
+                        turn=Player_1
+
+        if not replay():
+            break
