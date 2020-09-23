@@ -1,0 +1,8 @@
+def toss(P1,P2):
+    '''
+    Toss and decide which player will go first
+    '''
+    if random.randint(0,1)==1:
+        return P1
+    else:
+        return P2
